@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "886783335762",
+    "firebase_url": "https://projetnvibe-1577643980817.firebaseio.com",
+    "project_id": "projetnvibe-1577643980817",
+    "storage_bucket": "projetnvibe-1577643980817.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886783335762:android:a906f6953f7ec37d702e8b",
+        "android_client_info": {
+          "package_name": "com.example.arduinomobileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886783335762-ink5rtcalg5nrlnpnaafaj3f0a1m0f6e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPKUAS4FXq9OHUmtuQ4MYHUru2UV42Moo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886783335762-ink5rtcalg5nrlnpnaafaj3f0a1m0f6e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
