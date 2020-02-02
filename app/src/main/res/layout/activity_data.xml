@@ -6,11 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".DataActivity">
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Data"
-        android:gravity="center"
-        />
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
