@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                     JSONObject jo = new JSONObject(response);
                     if(jo.getString("code").equals("300")){
                         if(db.afficherTousUser().size()== 0) {
-                            db.insererUser(txt_username.getText().toString(), txt_password.getText().toString(), "token");
+                            db.insererUser(jo.getString("idlogin").toString(),txt_username.getText().toString(), txt_password.getText().toString(), "token");
                         }
                         txt_username.setText("");
                         txt_password.setText("");

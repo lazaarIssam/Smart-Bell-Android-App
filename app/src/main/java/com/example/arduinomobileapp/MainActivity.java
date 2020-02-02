@@ -51,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
             try {
                 Thread.sleep(minPrime);
                 if(db.afficherTousUser().size() > 0) {
-                    //Intent intent = new Intent(MainActivity.this, DataActivity.class);
-                    //startActivity(intent);
-                    //finish();
                     verify();
                 }else{
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);

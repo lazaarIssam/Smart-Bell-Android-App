@@ -15,7 +15,7 @@ public class DB_local extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table User(username text ,password text,token text)");
+        db.execSQL("create table User(idmac text,username text ,password text,token text)");
     }
 
     @Override
@@ -28,9 +28,10 @@ public class DB_local extends SQLiteOpenHelper {
         super.onDowngrade(db, oldVersion, newVersion);
     }
     //-------------------------------------------------------------------USER
-    public void insererUser(String username, String password, String token){
+    public void insererUser(String idmac,String username, String password, String token){
         SQLiteDatabase database = getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put("idmac",idmac);
         values.put("username",username);
         values.put("password",password);
         values.put("token",token);
@@ -42,7 +43,7 @@ public class DB_local extends SQLiteOpenHelper {
         Cursor cursor =  database.rawQuery("select * from User",null);
         if (cursor.moveToFirst())
             while (!cursor.isAfterLast()) {
-                arrayList.add(new User (cursor.getString(0), cursor.getString(1), cursor.getString(2)));
+                arrayList.add(new User (cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3)));
                 cursor.moveToNext();
             }
         return arrayList;

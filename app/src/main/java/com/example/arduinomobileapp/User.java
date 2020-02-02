@@ -1,6 +1,7 @@
 package com.example.arduinomobileapp;
 
 public class User {
+    String idmac;
     String username;
     String password;
     String token;
@@ -8,10 +9,19 @@ public class User {
     public User() {
     }
 
-    public User( String username, String password, String token) {
+    public User(String idmac, String username, String password, String token) {
+        this.idmac = idmac;
         this.username = username;
         this.password = password;
         this.token = token;
+    }
+
+    public String getIdmac() {
+        return idmac;
+    }
+
+    public void setIdmac(String idmac) {
+        this.idmac = idmac;
     }
 
     public String getUsername() {
