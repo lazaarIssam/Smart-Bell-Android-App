@@ -5,13 +5,31 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class DataActivity extends AppCompatActivity {
+    DB_local db = new DB_local(DataActivity.this, null, 1);
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
-    String url_data ="http://issamdata.alwaysdata.net/data.json";
+    String url_data ="http://issamdata.alwaysdata.net/select.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,5 +41,45 @@ public class DataActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         //------------------------------------------
+        getData();
+    }
+
+    public void getData(){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_data, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d(String.valueOf(DataActivity.this),"responsee: "+response.toString());
+                try {
+                    ArrayList<Information> ListSncf = new ArrayList<Information>();
+                    JSONArray jsonarray = new JSONArray(response);
+                    for(int i=0;i<jsonarray.length();i++){
+                        JSONObject jsonObject = jsonarray.getJSONObject(i);
+                        Information in = new Information();
+                        in.setDate(jsonObject.getString("date"));
+                        in.setHome(jsonObject.getString("home"));
+                        ListSncf.add(in);
+                    }
+                    adapter = new recyclerAdapter(ListSncf, DataActivity.this);
+                    recyclerView.setAdapter(adapter);
+                    Log.d(String.valueOf(DataActivity.this),"jsonArray: "+jsonarray.toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(String.valueOf(DataActivity.this),"error: "+error.getMessage());
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String,String>();
+                params.put("idlogin", db.afficherTousUser().get(0).getIdmac().toString());
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 }

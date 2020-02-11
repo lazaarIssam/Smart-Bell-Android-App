@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 
 public class DB_local extends SQLiteOpenHelper {
-    static  final String db_name="foodeals.db";
+    static  final String db_name="arduinoapp.db";
     public DB_local(Context context, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, db_name, factory, version);
     }
