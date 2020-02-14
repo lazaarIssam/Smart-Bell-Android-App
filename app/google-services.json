@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "886783335762-kk8vam3l2bkvj3ninttacms83j2pgf0n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.arduinomobileapp",
+            "certificate_hash": "3a3e8f981b45bc5a0ca500c24a111a0acf34adec"
+          }
+        },
+        {
           "client_id": "886783335762-ink5rtcalg5nrlnpnaafaj3f0a1m0f6e.apps.googleusercontent.com",
           "client_type": 3
         }
