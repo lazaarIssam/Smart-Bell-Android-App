@@ -55,8 +55,8 @@ public class LoginActivity extends AppCompatActivity {
                         if (!task.isSuccessful()) {
                             return;
                         }
-
                         frb_token = task.getResult().getToken();
+                        Log.d(String.valueOf(LoginActivity.this),"frb_token: "+frb_token);
                     }
                 });
         //-----------------------------
@@ -113,20 +113,11 @@ public class LoginActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
     private void loadtoken() {
+        Toast.makeText(LoginActivity.this,"LoadToken ",Toast.LENGTH_LONG).show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST,url_tokenUpdate, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                try {
-                    JSONObject jsonObj = new JSONObject (response);
-                    if(jsonObj.getString("code").equals("300")) {
-                        Log.d(String.valueOf(LoginActivity.this),"responseToken: "+response.toString());
-                    }
-                    else if(jsonObj.getString("codeEr").equals("301")) {
-                        Log.d(String.valueOf(LoginActivity.this),"erreurToken: "+response.toString());
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                Log.d(String.valueOf(LoginActivity.this),"responseToken: "+response.toString());
             }
         }, new Response.ErrorListener() {
             @Override

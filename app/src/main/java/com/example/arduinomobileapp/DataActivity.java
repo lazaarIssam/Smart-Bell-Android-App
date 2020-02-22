@@ -42,6 +42,8 @@ public class DataActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         //------------------------------------------
         getData();
+        //------------------------------------------
+        Log.d(String.valueOf(DataActivity.this),"Tokeeen: "+db.afficherTousUser().get(0).getToken());
     }
 
     public void getData(){
