@@ -69,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginFunction (){
+        loadtoken();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url_data, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -77,8 +78,8 @@ public class LoginActivity extends AppCompatActivity {
                     JSONObject jo = new JSONObject(response);
                     if(jo.getString("code").equals("300")){
                         if(db.afficherTousUser().size()== 0) {
-                            loadtoken();
-                            db.insererUser(jo.getString("idlogin").toString(),txt_username.getText().toString(), txt_password.getText().toString(), frb_token);
+                            db.insererUser(jo.getString("idlogin").toString(),txt_username.getText().toString(), txt_password.getText().toString(), jo.getString("token").toString());
+                            Log.d(String.valueOf(LoginActivity.this),"tokeeeeen: "+db.afficherTousUser().get(0).getToken());
                         }
                         txt_username.setText("");
                         txt_password.setText("");

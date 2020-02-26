@@ -3,6 +3,8 @@
     package="com.example.arduinomobileapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +26,7 @@
         <service
             android:name="com.example.arduinomobileapp.ArduinoNotif_reciever"
             android:permission="android.permission.BIND_JOB_SERVICE" />
+
         <service
             android:name="com.example.arduinomobileapp.MyFirebaseMessagingService"
             android:exported="false">
