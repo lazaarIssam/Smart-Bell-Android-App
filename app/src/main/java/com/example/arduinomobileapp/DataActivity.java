@@ -100,7 +100,7 @@ public class DataActivity extends AppCompatActivity {
                         JSONObject jsonObject = ja_data.getJSONObject(i);
                         Information in = new Information();
                         String horaire = jsonObject.getString("created_at");
-                        String heure = horaire.substring(0,9)+ " " + horaire.substring(11,16);
+                        String heure = horaire.substring(0,10)+ " " + horaire.substring(11,16);
                         in.setDate(heure);
                         in.setHome(jsonObject.getString("field1"));
                         ListSncf.add(in);
