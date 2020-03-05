@@ -43,7 +43,7 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
         if (arrayList.get(position).getHome().equals("0")) {
             holder.txt_heure.setText("Chez lui");
         }else {
-            holder.txt_heure.setText("pas Chez lui");
+            holder.txt_heure.setText("Dehors");
         }
     }
 
